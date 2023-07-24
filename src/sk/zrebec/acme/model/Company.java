@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public sealed class Company permits Acme {
-    List<Employee> employees;
+
+    private final List<Employee> employees;
 
     public Company(List<Employee> employees) {
         this.employees = new ArrayList<>(employees);
@@ -19,5 +20,9 @@ public sealed class Company permits Acme {
         return employees.stream()
                 .map(Employee::getName)
                 .collect(Collectors.toList());
+    }
+
+    public List<Employee> getAllEmployees() {
+        return employees;
     }
 }

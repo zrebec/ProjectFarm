@@ -10,14 +10,14 @@ public final class Acme extends Company {
     }
 
     public long averageEmployeesAge() {
-        return (long) employees.stream()
+        return (long) super.getAllEmployees().stream()
                 .mapToDouble(Employee::getAge)
                 .average()
                 .orElse(0);
     }
 
     public List<Employee> getOlderEmployeesThan(int initialAge) {
-        return employees.stream().filter(employee ->
+        return super.getAllEmployees().stream().filter(employee ->
                 employee.getAge() > initialAge).collect(Collectors.toList());
     }
 }
